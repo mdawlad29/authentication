@@ -1,5 +1,6 @@
 import express from "express"
 import { dbConnect } from "./config/db.js";
+import { routes } from "./routes/index.js";
 const app=express()
 const port=8000;
 
@@ -8,12 +9,10 @@ app.use(express.json())
 
 // Routes
 app.get("/",(req,res)=>{
-    res.status(200).json({
-        status:200,
-        message:"Welcome to authentication server",
-        data:[]
-    })
+    res.render("index.ejs")
 })
+
+app.use("/api",routes())
 
 // Connect to PostgreSQL
 dbConnect()
