@@ -1,12 +1,14 @@
 import pg from "pg"
+import dotenv from "dotenv"
 const {Client} =pg;
+dotenv.config()
+
+const isProduction=process.env.NODE_ENV==="production"
+
+const connectionString=`postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATABASE}`
 
 const client=new Client({
-    user:"postgres",
-    password:"awlad",
-    host:"localhost",
-    port:5432,
-    database:"authentication"
+    connectionString:isProduction?process.env.DATABASE_URL:connectionString
 })
 
 const dbConnect=async()=>{
