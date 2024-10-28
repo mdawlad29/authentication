@@ -13,17 +13,17 @@ app.set("view engine","ejs")
 app.get("/",(req,res)=>{
     res.render("index.ejs")
 })
-app.get("/user/register",(req,res)=>{
+app.get("/users/register",(req,res)=>{
     res.render("register.ejs")
 })
-app.get("/user/login",(req,res)=>{
+app.get("/users/login",(req,res)=>{
     res.render("login.ejs")
 })
-app.get("/user/dashboard",(req,res)=>{
+app.get("/users/dashboard",(req,res)=>{
     res.render("dashboard.ejs",{user:"awlad"})
 })
 
-app.use("/api",routes())
+app.use(routes())
 
 // Connect to PostgreSQL
 dbConnect()

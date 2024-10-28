@@ -8,10 +8,13 @@ Router.get("/users",(req,res)=>{
     })
 })
 Router.post("/users/register",(req,res)=>{
-    res.status(201).json({
-        status:201,
-        message:"User created successfully"
-    })
+    const {name,email,password,confirm_password}=req.body
+    console.log({name,email,password,confirm_password})
+
+    // res.status(201).json({
+    //     status:201,
+    //     message:"User created successfully"
+    // })
 })
 
 
